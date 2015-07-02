@@ -1,0 +1,48 @@
+<% content_for :titles do %>
+  Product <%= @inventory.id %>
+<% end %>
+<div>Sku: <%= @inventory.sku %></div>
+<div>Name: <%= @inventory.name %></div>
+<div>Stock: <%= @inventory.stock %></div>
+<div>Blurb: <%= @inventory.blurb %></div>
+<!-- if we have an active reorder what is the date -->
+<% if @inventory.reorder_date %>
+  <div>Reorder delivery date: <%= @inventory.reorder_date %></div>
+<% end %>
+<br>
+
+<!-- if there is no active reorder and the product stock is less than 100 items show reorder button -->
+<% if @inventory.reorder_stock? %>
+  <div><%= button_to 'Reorder', reorder_inventory_path(@inventory), method: :patch, class: 'btn btn-primary' %></div>
+<% end %>
+
+<!-- if there are reorders show a sub table -->
+
+<% if @inventory.reorder_report %>
+
+  <table class="table table-striped">
+    <thead>
+    <tr>
+      <th>Status</th>
+      <th>Quantity</th>
+      <th>Estimated Delivery Date</th>
+      <th>Delivery Date</th>
+      <th colspan="3"></th>
+    </tr>
+    </thead>
+
+    <tbody>
+    <% @inventory.reorder_report.each do |reorder| %>
+      <tr>
+        <td><%= reorder.status %></td>
+        <td><%= reorder.quantity %></td>
+        <td><%= reorder.estimated_delivery_date %></td>
+        <td><%= reorder.delivery_date %></td>
+      </tr>
+    <% end %>
+    </tbody>
+  </table>
+<% end %>
+<br>
+<%= link_to 'Edit', edit_inventory_path(@inventory) %> |
+<%= link_to 'Back', inventories_path %>
