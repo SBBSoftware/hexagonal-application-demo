@@ -1,9 +1,7 @@
-= SbbHexagonal Application Test
+## Rails Hexagonal Repository Pattern Application Example
 
-Source code for Part II of Rails Hexagonal Tutorial contained at http://www.sbbsoftware.com/rails-hexagonal-architecture-repository-pattern
+### [Source code for Part 2 Of Rails Hexagonal Architecture](http://www.sbbsoftware.com/rails-hexagonal-architecture-repository-pattern)
 
+View articles, tips and more at [Sometimes Interesting](http://www.sbbsoftware.com)
 
-## Usage
-
-Should not be used outside the context of learning. This source code is to accompany articles at http://www/sbbsoftware.com
 
